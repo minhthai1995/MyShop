@@ -8,6 +8,7 @@ import backList from '../../media/appIcon/backList.png';
 import changeInfo from '../../api/changeInfo';
 import getToken from '../../api/getToken';
 import global from '../global';
+import I18n from '../../../i18n.js';
 
 export default class ChangeInfo extends Component {
     constructor(props) {
@@ -55,13 +56,13 @@ export default class ChangeInfo extends Component {
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                         <Image source={backList} style={backIconStyle} />
                     </TouchableOpacity>
-                    <Text style={headerTitle}>User Infomation</Text>
+                    <Text style={headerTitle}>{I18n.t('UserInfo')}</Text>
                     <View style={{ width: 30 }} />
                 </View>
                 <View style={body}>
                     <TextInput
                         style={textInput}
-                        placeholder="Enter your name"
+                        placeholder={I18n.t('Name')}
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
                         value={txtName}
@@ -69,7 +70,7 @@ export default class ChangeInfo extends Component {
                     />
                     <TextInput
                         style={textInput}
-                        placeholder="Enter your address"
+                        placeholder={I18n.t('Address')}
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
                         value={txtAddress}
@@ -77,14 +78,17 @@ export default class ChangeInfo extends Component {
                     />
                     <TextInput
                         style={textInput}
-                        placeholder="Enter your phone number"
+                        placeholder={I18n.t('Phone')}
                         underlineColorAndroid="transparent"
                         autoCapitalize="none"
                         value={txtPhone}
                         onChangeText={text => this.setState({ ...this.state, txtPhone: text })}
                     />
-                    <TouchableOpacity style={signInContainer} onPress={this.changeUserInfo.bind(this)}>
-                        <Text style={signInTextStyle}>CHANGE YOUR INFOMATION</Text>
+                    <TouchableOpacity
+                      style={signInContainer}
+                      onPress={this.changeUserInfo.bind(this)}
+                    >
+                        <Text style={signInTextStyle}>{I18n.t('ChangeInfomation')}</Text>
                     </TouchableOpacity>
                 </View>
             </View>

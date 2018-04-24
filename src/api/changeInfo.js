@@ -1,5 +1,5 @@
 const changeInfo = (token, name, phone, address) => (
-  fetch('http://192.168.1.11:81/api/change_info.php', //eslint-disable-line
+  fetch('http://192.168.1.13:81/api/change_info.php', //eslint-disable-line
   {
     method: 'POST',
     headers: {

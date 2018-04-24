@@ -6,14 +6,20 @@ import {
 import global from '../../../global';
 import sendOrder from '../../../../api/sendOrder';
 import getToken from '../../../../api/getToken';
+import I18n from '../../../../../i18n.js';
 
-const url = 'http://192.168.1.11:81/api/images/product/';
+const url = 'http://192.168.1.13:81/api/images/product/';
 
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
-class CartView extends Component {
+export default class CartView extends Component {
+    constructor(props) {
+      super(props);
+      global.forceUpdateCart = this.forceUpdateCart.bind(this);
+    }
+
     async onSendOrder() {
       try {
         const cartArray = this.props.screenProps;
@@ -28,6 +34,11 @@ class CartView extends Component {
       } catch (e) {
         console.log(e);
       }
+    }
+
+    forceUpdateCart() {
+      console.log('FORCE UPDATE CART');
+      this.setState({});
     }
     clearCart() {
       global.clearCart();
@@ -103,7 +114,7 @@ class CartView extends Component {
                                 onPress={() =>
                                 this.props.navigation.navigate('ProductDetail_View', item.product)}
                               >
-                                  <Text style={txtShowDetail}>SHOW DETAILS</Text>
+                                  <Text style={txtShowDetail}>{I18n.t('Detail')}</Text>
                               </TouchableOpacity>
                           </View>
                       </View>
@@ -114,7 +125,9 @@ class CartView extends Component {
                   style={checkoutButton}
                   onPress={() => this.onSendOrder()}
                 >
-                    <Text style={checkoutTitle}>TOTAL {total}$ CHECKOUT NOW</Text>
+                    <Text style={checkoutTitle}>
+                      {I18n.t('Total')} {total}$ {I18n.t('CheckOut')}
+                    </Text>
                 </TouchableOpacity>
             </View>
         );
@@ -203,8 +216,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     }
 });
-
-export default CartView;
 
 // import React, { Component } from 'react';
 // import {

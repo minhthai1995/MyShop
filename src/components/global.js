@@ -7,5 +7,9 @@ module.export = {
   clearCart: null,
   onSignIn: null,
   gotoSearch: null,
-  setSearchArray: null
+  setSearchArray: null,
+  forceUpdate: null,
+  forceUpdateAppStack: null,
+  forceUpdateHome: null,
+  forceUpdateCart: null
 };

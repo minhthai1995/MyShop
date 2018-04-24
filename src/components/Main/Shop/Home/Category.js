@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
+import I18n from '../../../../../i18n.js';
 
 const { width, height } = Dimensions.get('window');
-const url = 'http://192.168.1.11:81/api/images/type/';
+const url = 'http://192.168.1.13:81/api/images/type/';
 export default class Category extends Component {
   render() {
     const { types } = this.props;
@@ -12,7 +13,7 @@ export default class Category extends Component {
     return (
       <View style={styles.wrapper}>
         <View style={{ flex: 1, justifyContent: 'center' }}>
-          <Text style={styles.textStyle}>LIST OF CATEGORY</Text>
+          <Text style={styles.textStyle}>{I18n.t('ListCategory')}</Text>
         </View>
         <View style={{ flex: 4 }} >
           <Swiper style={styles.swiperStyle}>

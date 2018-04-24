@@ -20,6 +20,7 @@ import contactIcon from '../../../media/appIcon/contact0.png';
 import initData from '../../../api/initData';
 import getCart from '../../../api/getCart';
 import saveCart from '../../../api/saveCart';
+import I18n from '../../../../i18n.js';
 
 export default class Shop extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ export default class Shop extends Component {
 
 
   componentDidMount() {
-    // fetch('http://192.168.1.11:81/api/index.php')  // eslint-disable-line
+    // fetch('http://192.168.1.13:81/api/index.php')  // eslint-disable-line
     // .then(res => res.json())
     initData()
     .then(resJSON => {
@@ -133,17 +134,17 @@ export default class Shop extends Component {
         <TabNavigator>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'home'}
-            title="Home"
+            title={I18n.t('Home')}
             onPress={() => this.setState({ selectedTab: 'home' })}
             renderIcon={() => <Image source={homeIcon} style={styles.iconStyle} />}
             renderSelectedIcon={() => <Image source={homeIconS} style={styles.iconStyle} />}
             selectedTitleStyle={{ color: '#34B089' }}
           >
-            <Home mainData={mainData} />
+            <Home mainData={mainData} lang={I18n.locale} />
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'cart'}
-            title="Cart"
+            title={I18n.t('Cart')}
             onPress={() => this.setState({ selectedTab: 'cart' })}
             renderIcon={() => <Image source={cartIcon} style={styles.iconStyle} />}
             renderSelectedIcon={() => <Image source={cartIconS} style={styles.iconStyle} />}
@@ -154,7 +155,7 @@ export default class Shop extends Component {
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'search'}
-            title="Search"
+            title={I18n.t('Search')}
             onPress={() => this.setState({ selectedTab: 'search' })}
             renderIcon={() => <Image source={searchIcon} style={styles.iconStyle} />}
             renderSelectedIcon={() => <Image source={searchIconS} style={styles.iconStyle} />}
@@ -164,7 +165,7 @@ export default class Shop extends Component {
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'contact'}
-            title="Contacts"
+            title={I18n.t('Contact')}
             onPress={() => this.setState({ selectedTab: 'contact' })}
             renderIcon={() => <Image source={contactIcon} style={styles.iconStyle} />}
             renderSelectedIcon={() => <Image source={contactIconS} style={styles.iconStyle} />}

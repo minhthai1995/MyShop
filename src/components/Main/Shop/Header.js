@@ -5,6 +5,7 @@ import icLogo from '../../../media/appIcon/ic_logo.png';
 import icMenu from '../../../media/appIcon/ic_menu.png';
 import global from '../../global';
 import search from '../../../api/searchProduct';
+import I18n from '../../../../i18n.js';
 
 const { height } = Dimensions.get('window');
 
@@ -33,11 +34,11 @@ export default class Header extends Component {
           >
             <Image source={icMenu} style={styles.iconStyle} />
           </TouchableOpacity>
-          <Text style={styles.titleStyle}>Buy a Toy</Text>
+          <Text style={styles.titleStyle}>{I18n.t('Greeting')}</Text>
           <Image source={icLogo} style={styles.iconStyle} />
         </View>
       <TextInput
-        placeholder="What do you want to buy?"
+        placeholder={I18n.t('SearchBar')}
         underlineColorAndroid="transparent"
         style={styles.textInput}
         value={this.state.txtSearch}

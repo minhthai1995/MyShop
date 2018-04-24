@@ -9,6 +9,7 @@ import {
 import icBack from '../../media/appIcon/back_white.png';
 import icLogo from '../../media/appIcon/ic_logo.png';
 //import register from '../../api/register';
+import I18n from '../../../i18n.js';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
@@ -50,19 +51,19 @@ export default class Authentication extends Component {
           >
             <Image source={icBack} style={styles.iconStyle} />
           </TouchableOpacity>
-          <Text style={styles.titleStyle}>Buy a Toy</Text>
+          <Text style={styles.titleStyle}>{I18n.t('Greeting')}</Text>
           <Image source={icLogo} style={styles.iconStyle} />
         </View>
           {mainJSX}
         <View style={styles.signControl}>
           <TouchableOpacity style={styles.signInStyle} onPress={this.signInClicked.bind(this)}>
             <Text style={this.state.isSignIn ? styles.activeStyle : styles.inactiveStyle}>
-              SIGN IN
+              {I18n.t('Login')}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.signUpStyle} onPress={this.signUpClicked.bind(this)}>
             <Text style={this.state.isSignIn ? styles.inactiveStyle : styles.activeStyle}>
-              SIGN UP
+              {I18n.t('Register')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'space-between'
   },
-  row1: { flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' },
+  row1: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   titleStyle: { color: '#fff', fontFamily: 'Calibri', fontSize: 20 },
   iconStyle: { width: 25, height: 25 },
   signControl: {

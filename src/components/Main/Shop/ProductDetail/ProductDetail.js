@@ -3,8 +3,10 @@ import {
     View, Text, StyleSheet, Image, Dimensions, ScrollView, TouchableOpacity
 } from 'react-native';
 import global from '../../../global';
+import I18n from '../../../../../i18n.js';
 
-const url = 'http://192.168.1.11:81/api/images/product/';
+
+const url = 'http://192.168.1.13:81/api/images/product/';
 const back = require('../../../../media/appIcon/back.png');
 const cart = require('../../../../media/appIcon/cartfull.png');
 
@@ -55,9 +57,9 @@ export default class ProductDetail extends Component {
                         <View style={descContainer}>
                             <Text style={descStyle}>{product.description}</Text>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 15 }}>
-                                <Text style={txtMaterial}>Material {product.material}</Text>
+                                <Text style={txtMaterial}>{I18n.t('Material')} {product.material}</Text>
                                 <View style={{ flexDirection: 'row' }} >
-                                    <Text style={txtColor}>Color {product.color}</Text>
+                                    <Text style={txtColor}>{I18n.t('Color')} {product.color}</Text>
                                     <View style={{ height: 15, width: 15, backgroundColor: product.color.toLowerCase(), borderRadius: 15, marginLeft: 10, borderWidth: 1, borderColor: '#C21C70' }} />
                                 </View>
                             </View>

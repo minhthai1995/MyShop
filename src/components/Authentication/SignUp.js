@@ -8,6 +8,7 @@ import {
   Alert
 } from 'react-native';
 import register from '../../api/register';
+import I18n from '../../../i18n.js';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -55,14 +56,14 @@ export default class SignUp extends Component {
       <View>
         <TextInput
           style={styles.inputStyle}
-          placeholder="Enter your name"
+          placeholder={I18n.t('Name')}
           underlineColorAndroid="transparent"
           value={this.state.name}
           onChangeText={text => this.setState({ name: text })}
         />
         <TextInput
           style={styles.inputStyle}
-          placeholder="Enter your email"
+          placeholder={I18n.t('Email')}
           underlineColorAndroid="transparent"
           value={this.state.email}
           onChangeText={text => this.setState({ email: text })}
@@ -70,7 +71,7 @@ export default class SignUp extends Component {
         <TextInput
           style={styles.inputStyle}
           secureTextEntry
-          placeholder="Enter your password "
+          placeholder={I18n.t('Password')}
           underlineColorAndroid="transparent"
           value={this.state.password}
           onChangeText={text => this.setState({ password: text })}
@@ -78,7 +79,7 @@ export default class SignUp extends Component {
         <TextInput
           style={styles.inputStyle}
           secureTextEntry
-          placeholder="Re-enter your password"
+          placeholder={I18n.t('RePassword')}
           underlineColorAndroid="transparent"
           value={this.state.rePassword}
           onChangeText={text => this.setState({ rePassword: text })}
@@ -88,7 +89,7 @@ export default class SignUp extends Component {
           style={styles.btnSignIn}
           onPress={this.registerUser.bind(this)}
         >
-          <Text style={styles.btnText}>SIGN UP NOW</Text>
+          <Text style={styles.btnText}>{I18n.t('SignUpNow')}</Text>
         </TouchableOpacity>
       </View>
     );

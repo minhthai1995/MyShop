@@ -12,6 +12,10 @@ import refreshToken from '../../api/refreshToken';
 import global from '../global';
 
 export default class Main extends Component {
+  constructor(props) {
+    super(props);
+    global.forceUpdate = this.forceUpdate.bind(this);
+  }
   componentDidMount() {
     getToken()
     .then(token => checkLogin(token))
@@ -27,6 +31,10 @@ export default class Main extends Component {
     );
   }, 300000);
   }
+  forceUpdate() {
+    console.log('FORCE UPDATE');
+    this.setState({});
+  }
   closeControlPanel = () => {
     this.drawer.close();
   };
@@ -41,7 +49,7 @@ export default class Main extends Component {
           ref={(ref) => { this.drawer = ref; }}
           content={<Menu navigation={navigation} />}
           tapToClose
-          openDrawerOffset={0.4}
+          openDrawerOffset={0.3}
           >
             <Shop open={this.openControlPanel.bind(this)} />
           </Drawer>

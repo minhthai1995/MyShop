@@ -9,6 +9,7 @@ import {
 import signIn from '../../api/signIn';
 import global from '../global';
 import saveToken from '../../api/saveToken';
+import I18n from '../../../i18n.js';
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -35,14 +36,14 @@ export default class SignIn extends Component {
       <View>
         <TextInput
           style={styles.inputStyle}
-           placeholder="Enter your email"
+           placeholder={I18n.t('Email')}
            underlineColorAndroid="transparent"
            value={email}
            onChangeText={text => this.setState({ email: text })}
         />
         <TextInput
           style={styles.inputStyle}
-           placeholder="Enter your password"
+           placeholder={I18n.t('Password')}
            underlineColorAndroid="transparent"
            value={password}
            onChangeText={text => this.setState({ password: text })}
@@ -52,7 +53,7 @@ export default class SignIn extends Component {
           style={styles.btnSignIn}
           onPress={this.onSignIn.bind(this)}
         >
-          <Text style={styles.btnText}>SIGN IN NOW</Text>
+          <Text style={styles.btnText}>{I18n.t('LoginNow')}</Text>
         </TouchableOpacity>
       </View>
     );

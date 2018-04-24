@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions,
         StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import I18n from '../../../../../i18n.js';
 // import sp1 from '../../../../media/temp/sp1.jpeg';
 // import sp2 from '../../../../media/temp/sp2.jpeg';
 // import sp3 from '../../../../media/temp/sp3.jpeg';
@@ -20,7 +21,7 @@ import { View, Text, Image, Dimensions,
 </View> */
 
 const { width } = Dimensions.get('window');
-const url = 'http://192.168.1.11:81/api/images/product/';
+const url = 'http://192.168.1.13:81/api/images/product/';
 
 export default class TopProduct extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ export default class TopProduct extends Component {
       return (
         <View style={styles.container}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>TOP PRODUCT</Text>
+            <Text style={styles.title}>{I18n.t('TopProduct')}</Text>
           </View>
           <View style={styles.body}>
             <FlatList

@@ -9,18 +9,16 @@ import {
 import global from '../global';
 import saveToken from '../../api/saveToken';
 import profileIcon from '../../media/temp/profile.png';
-
+import I18n from '../../../i18n.js';
 
 export default class Menu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: false
+      user: false,
+      isSignIn: false
     };
     global.onSignIn = this.onSignIn.bind(this);
-  }
-  componentDidMount() {
-
   }
   onSignIn(user) {
     this.setState({ user });
@@ -29,17 +27,58 @@ export default class Menu extends Component {
     this.setState({ user: false });
     saveToken('');
   }
+  changeToVNamese() {
+    I18n.locale = 'vi';
+    console.log('I18n ne', I18n);
+    global.forceUpdate();
+    global.forceUpdateHome();
+    try {
+      global.forceUpdateCart();
+    } catch (e) {
+      console.log(e);
+    }
+    // if (typeof global.forceUpdateCart === 'function') {
+    //     console.log('UPDATE CART FORCE');
+    // } else {
+    //     console.log('NOT UPDATE CART FORCE');
+    // }
+  }
+  changeToEnglish() {
+    I18n.locale = 'en';
+    console.log('I18n ne', I18n);
+    global.forceUpdate();
+    global.forceUpdateHome();
+    try {
+      global.forceUpdateCart();
+    } catch (e) {
+      console.log(e);
+    }
+  }
   render() {
     const { user } = this.state;
     const logoutJSX = (
-      <View>
+      <View style={styles.contentContainer}>
         <TouchableOpacity
             style={styles.btnStyle}
             onPress={() => this.props.navigation.navigate('ManHinh_Authentication')}
         >
-          <Text style={styles.btnText}>Sign In</Text>
+          <Text style={styles.btnText}>{I18n.t('Login')}</Text>
         </TouchableOpacity>
+        <View />
+        <View style={styles.signControl}>
+          <TouchableOpacity style={styles.signInStyle} onPress={this.changeToVNamese.bind(this)}>
+            <Text style={this.state.isSignIn ? styles.activeStyle : styles.inactiveStyle}>
+              VI
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.signUpStyle} onPress={this.changeToEnglish.bind(this)}>
+            <Text style={this.state.isSignIn ? styles.inactiveStyle : styles.activeStyle}>
+              EN
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
+
     );
     const loginJSX = (
       <View style={styles.contentContainer}>
@@ -49,19 +88,31 @@ export default class Menu extends Component {
             style={styles.btnStyle}
             onPress={() => this.props.navigation.navigate('ManHinh_OrderHistory')}
           >
-            <Text style={styles.btnText}>Order History</Text>
+            <Text style={styles.btnText}>{I18n.t('OrderHistory')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.btnStyle}
             onPress={() => this.props.navigation.navigate('ManHinh_ChangeInfo', user)}
           >
-            <Text style={styles.btnText}>Change Info</Text>
+            <Text style={styles.btnText}>{I18n.t('ChangeInfo')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btnStyle} onPress={this.onSignOut.bind(this)}>
-            <Text style={styles.btnText}>Sign Out</Text>
+            <Text style={styles.btnText}>{I18n.t('SignOut')}</Text>
           </TouchableOpacity>
         </View>
         <View />
+        <View style={styles.signControl}>
+          <TouchableOpacity style={styles.signInStyle} onPress={this.changeToVNamese.bind(this)}>
+            <Text style={styles.inactiveStyle}>
+              VI
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.signUpStyle} onPress={this.changeToEnglish.bind(this)}>
+            <Text style={styles.inactiveStyle}>
+              EN
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
     const menuJSX = this.state.user ? loginJSX : logoutJSX;
@@ -109,6 +160,35 @@ const styles = StyleSheet.create({
    contentContainer: {
     flex: 1,
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 10
+  },
+  inactiveStyle: {
+    color: '#D7D7D7'
+  },
+  activeStyle: {
+    color: '#34B089'
+  },
+  signInStyle: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    paddingVertical: 17,
+    flex: 1,
+    borderBottomLeftRadius: 20,
+    borderTopLeftRadius: 20,
+    marginRight: 2
+  },
+  signUpStyle: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    paddingVertical: 17,
+    flex: 1,
+    borderBottomRightRadius: 20,
+    borderTopRightRadius: 20,
+    marginLeft: 2
+  },
+  signControl: {
+    flexDirection: 'row',
+    width: 200,
   }
 });

@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import getListProduct from '../../../../api/getListProduct';
 import backList from '../../../../media/appIcon/backList.png';
+import I18n from '../../../../../i18n.js';
 
-const url = 'http://192.168.1.11:81/api/images/product/';
+const url = 'http://192.168.1.13:81/api/images/product/';
 // import sp2 from '../../../../media/temp/sp2.jpeg';
 // import sp3 from '../../../../media/temp/sp3.jpeg';
 // import sp4 from '../../../../media/temp/sp4.jpeg';
@@ -89,7 +90,7 @@ export default class ListProduct extends Component {
                     <TouchableOpacity
                       onPress={() => this.props.navigation.navigate('ProductDetail_View', item)}
                     >
-                      <Text style={styles.txtShowDetail}>SHOW DETAILS</Text>
+                      <Text style={styles.txtShowDetail}>{I18n.t('Detail')}</Text>
                     </TouchableOpacity>
                   </View>
                 </View>

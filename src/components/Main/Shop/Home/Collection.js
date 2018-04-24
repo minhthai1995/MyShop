@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import bannerImage from '../../../../media/temp/banner.jpg';
+import I18n from '../../../../../i18n.js';
 
 const { width, height } = Dimensions.get('window');
 export default class Collection extends Component {
@@ -10,7 +11,7 @@ export default class Collection extends Component {
         style={styles.wrapper}
       >
         <View style={{ flex: 1, justifyContent: 'center' }}>
-          <Text style={styles.textStyle}>SPRING COLLECTION</Text>
+          <Text style={styles.textStyle}>{I18n.t('ShowCase')}</Text>
         </View>
         <View style={{ flex: 4 }} >
           <Image source={bannerImage} style={styles.imageStyle} />
