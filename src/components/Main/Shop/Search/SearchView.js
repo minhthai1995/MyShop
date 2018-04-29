@@ -10,7 +10,7 @@ function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 }
 
-const url = 'http://192.168.1.13:81/api/images/product/';
+const url = 'http://192.168.1.16:81/api/images/product/';
 class SearchView extends Component {
     constructor(props) {
       super(props);

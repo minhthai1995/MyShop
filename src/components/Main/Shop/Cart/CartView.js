@@ -8,7 +8,7 @@ import sendOrder from '../../../../api/sendOrder';
 import getToken from '../../../../api/getToken';
 import I18n from '../../../../../i18n.js';
 
-const url = 'http://192.168.1.13:81/api/images/product/';
+const url = 'http://192.168.1.16:81/api/images/product/';
 
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());

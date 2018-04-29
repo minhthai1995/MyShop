@@ -7,8 +7,13 @@ import {
   StyleSheet,
   Alert
 } from 'react-native';
+import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 import register from '../../api/register';
 import I18n from '../../../i18n.js';
+import signIn from '../../api/signIn';
+import global from '../global';
+import saveToken from '../../api/saveToken';
+
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -20,7 +25,30 @@ export default class SignUp extends Component {
       rePassword: ''
     };
   }
-
+  onSignIn() {
+   const { name, email, password } = this.state;
+   signIn(email, password)
+   .then(res => {
+     global.onSignIn(res.user);
+     this.props.goBackToMain();
+     saveToken(res.token);
+   })
+   .catch(err => {
+     console.log(err);
+     register(name, email, password)
+     .then(res => {
+       console.log('ket qua dang nhap');
+       if (res === 'THANH_CONG') {
+         signIn(email, password)
+         .then(response => {
+           global.onSignIn(response.user);
+           this.props.goBackToMain();
+           saveToken(response.token);
+         });
+       }
+     });
+   });
+  }
   onSuccess() {
     Alert.alert(
       'Notice',
@@ -50,6 +78,43 @@ export default class SignUp extends Component {
           this.onFail();
         });
     }
+  }
+  fbAuth() {
+  LoginManager.logInWithReadPermissions(['public_profile'])
+  .then((result) => {
+    if (result.isCancelled) {
+      console.log('login is cancelled.');
+    } else {
+      AccessToken.getCurrentAccessToken().then(
+          (data) => {  //eslint-disable-line
+            const infoRequest = new GraphRequest(
+              '/me?fields=name,picture',
+              null,
+              (er, re) => {
+                  if (er) {
+                    console.log('Error fetching data: ', er.toString());
+                  } else {
+                    console.log('Result Name: ', re);
+                    this.setState({
+                      name: re.name,
+                      email: re.name,
+                      password: '123abc',
+                      rePassword: '123abc'
+                    });
+                    this.onSignIn();
+                  }
+                }
+
+            );
+            // Start the graph request.
+            new GraphRequestManager().addRequest(infoRequest).start();
+          }
+        );
+    }
+  },
+  (error) => {
+    console.log(error);
+  });
   }
   render() {
     return (
@@ -90,6 +155,12 @@ export default class SignUp extends Component {
           onPress={this.registerUser.bind(this)}
         >
           <Text style={styles.btnText}>{I18n.t('SignUpNow')}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.btnSignIn}
+          onPress={this.fbAuth.bind(this)}
+        >
+          <Text style={styles.btnText}>SIGN IN WITH FACEBOOK</Text>
         </TouchableOpacity>
       </View>
     );

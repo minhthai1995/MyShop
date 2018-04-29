@@ -21,7 +21,7 @@ import I18n from '../../../../../i18n.js';
 </View> */
 
 const { width } = Dimensions.get('window');
-const url = 'http://192.168.1.13:81/api/images/product/';
+const url = 'http://192.168.1.16:81/api/images/product/';
 
 export default class TopProduct extends Component {
   constructor(props) {
