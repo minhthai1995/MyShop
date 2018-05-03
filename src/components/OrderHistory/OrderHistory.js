@@ -5,6 +5,7 @@ import {
 import backList from '../../media/appIcon/backList.png';
 import getOrderHistory from '../../api/getOrderHistory';
 import getToken from '../../api/getToken';
+import I18n from '../../../i18n.js';
 
 export default class OrderHistory extends Component {
     constructor(props) {
@@ -19,13 +20,14 @@ export default class OrderHistory extends Component {
     }
     render() {
         const { wrapper, header, headerTitle, backIconStyle, body, orderRow } = styles;
+        console.log('arrOrder:::', this.state.arrOrder);
         return (
             <View style={wrapper}>
                 <View style={header}>
                     <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                         <Image source={backList} style={backIconStyle} />
                     </TouchableOpacity>
-                    <Text style={headerTitle}>Order History</Text>
+                    <Text style={headerTitle}>{I18n.t('OrderHistory').toUpperCase()}</Text>
                     <View style={{ width: 30 }} />
                 </View>
                 <View style={body}>
@@ -34,26 +36,30 @@ export default class OrderHistory extends Component {
                         <View style={orderRow} key={e.id}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>
-                                  Order id:
+                                  {I18n.t('OrderId')}:
                                 </Text>
                                 <Text style={{ color: '#2ABB9C' }}>ORD{e.id}</Text>
                             </View>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>
-                                  OrderTime:
+                                  {I18n.t('OrderTime')}:
                                 </Text>
                                 <Text style={{ color: '#C21C70' }}>{e.date_order}</Text>
                             </View>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                 <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>
-                                  Status:
+                                  {I18n.t('Status')}:
                                 </Text>
                                 <Text style={{ color: '#2ABB9C' }}>
-                                  {e.status ? 'Completed' : 'Pending'}
+                                  {e.status === '0' ? 'Pending' : (e.status === '1' ? 'Completed' : 'Cancelled') }
                                 </Text>
                             </View>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <Text style={{ color: '#9A9A9A', fontWeight: 'bold' }}>Total:</Text>
+                                <Text
+                                  style={{ color: '#9A9A9A', fontWeight: 'bold' }}
+                                >
+                                {I18n.t('Total')}:
+                                </Text>
                                 <Text style={{ color: '#C21C70', fontWeight: 'bold' }}>
                                   {e.total}$
                                 </Text>

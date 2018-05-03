@@ -4,7 +4,7 @@ import Swiper from 'react-native-swiper';
 import I18n from '../../../../../i18n.js';
 
 const { width, height } = Dimensions.get('window');
-const url = 'http://192.168.1.16:81/api/images/type/';
+const url = 'http://unsmiling-plugs.000webhostapp.com/images/type/';
 export default class Category extends Component {
   render() {
     const { types } = this.props;

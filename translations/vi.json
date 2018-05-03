@@ -27,5 +27,8 @@
   "Material": "Chất liệu",
   "Color": "Màu sắc",
   "Total": "TỔNG",
-  "CheckOut": "THANH TOÁN NGAY"
+  "CheckOut": "THANH TOÁN NGAY",
+  "OrderId": "ID Đơn Hàng",
+  "OrderTime":"Thời gian đặt",
+  "Status":"Trạng thái"
 }

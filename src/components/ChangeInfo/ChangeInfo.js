@@ -25,7 +25,7 @@ export default class ChangeInfo extends Component {
         'Notice',
         'Update Infomation Successfully',
         [
-          { text: 'OK', onPress: () => this.props.navigation.goBack() },
+          { text: 'OK', onPress: () => this.props.navigation.navigate('ManHinh_OrderHistory') },
         ],
         { cancelable: false }
       );

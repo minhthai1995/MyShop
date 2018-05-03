@@ -8,7 +8,7 @@ import sendOrder from '../../../../api/sendOrder';
 import getToken from '../../../../api/getToken';
 import I18n from '../../../../../i18n.js';
 
-const url = 'http://192.168.1.16:81/api/images/product/';
+const url = 'http://unsmiling-plugs.000webhostapp.com/images/product/';
 
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
@@ -19,7 +19,6 @@ export default class CartView extends Component {
       super(props);
       global.forceUpdateCart = this.forceUpdateCart.bind(this);
     }
-
     async onSendOrder() {
       try {
         const cartArray = this.props.screenProps;
@@ -31,6 +30,7 @@ export default class CartView extends Component {
       const kq = await sendOrder(token, arrayDetail);
       this.clearCart();
       console.log(kq);
+      await global.gotoChangeInfo();
       } catch (e) {
         console.log(e);
       }

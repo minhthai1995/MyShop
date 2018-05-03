@@ -27,6 +27,9 @@ export default class SignUp extends Component {
   }
   onSignIn() {
    const { name, email, password } = this.state;
+   console.log('Name', name);
+   console.log('email', email);
+   console.log('password', password);
    signIn(email, password)
    .then(res => {
      global.onSignIn(res.user);
@@ -44,7 +47,8 @@ export default class SignUp extends Component {
            global.onSignIn(response.user);
            this.props.goBackToMain();
            saveToken(response.token);
-         });
+         })
+         .catch(error => console.log(error));
        }
      });
    });
@@ -181,7 +185,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginBottom: 10
   },
   btnText: {
     color: '#fff',

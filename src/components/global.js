@@ -11,5 +11,6 @@ module.export = {
   forceUpdate: null,
   forceUpdateAppStack: null,
   forceUpdateHome: null,
-  forceUpdateCart: null
+  forceUpdateCart: null,
+  gotoChangeInfo: null
 };

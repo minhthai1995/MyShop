@@ -20,6 +20,19 @@ export default class Authentication extends Component {
       isSignIn: false
     };
   }
+  // componentDidMount() {
+  //   console.log('comhere');
+  //   initData()
+  //   .then(resJSON => {
+  //     console.log('init:', resJSON);
+  //     const { type } = resJSON;
+  //     this.setState({
+  //       types: type,
+  //       mainData: resJSON
+  //     });
+  //   })
+  //   .catch(error => console.log(error));
+  // }
   signInClicked() {
     this.setState({
       isSignIn: true
@@ -42,7 +55,7 @@ export default class Authentication extends Component {
   render() {
     const mainJSX = this.state.isSignIn ?
           <SignIn goBackToMain={this.goBackToMain.bind(this)} /> :
-          <SignUp gotoSignIn={this.gotoSignIn.bind(this)} goBackToMain={this.goBackToMain.bind(this)} />;
+          <SignUp gotoSignIn={this.gotoSignIn.bind(this)} goBackToMain={this.goBackToMain.bind(this)} />;  //eslint-disable-line
     return (
       <View style={styles.container}>
         <View style={styles.row1}>

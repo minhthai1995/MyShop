@@ -2,7 +2,7 @@ import saveToken from './saveToken';
 
 
 const refreshToken = (token) => {
-  fetch('http://192.168.1.16:81/api/refresh_token.php', //eslint-disable-line
+  fetch('http://unsmiling-plugs.000webhostapp.com/refresh_token.php', //eslint-disable-line
   {
     method: 'POST',
     headers: {

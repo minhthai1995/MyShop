@@ -1,5 +1,6 @@
 const searchProduct = (key) => {
-  const url = `http://192.168.1.16:81/api/search.php?key=${key}`;
+  const url = `http://unsmiling-plugs.000webhostapp.com/search.php?key=${key}`;
+  console.log('url ne', url);
   return fetch(url)  //eslint-disable-line
   .then(res => res.json());
 };

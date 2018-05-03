@@ -1,5 +1,5 @@
 const getOrderHistory = (token) => (
-  fetch('http://192.168.1.16:81/api/order_history.php',  //eslint-disable-line
+  fetch('http://unsmiling-plugs.000webhostapp.com/order_history.php',  //eslint-disable-line
   {
     method: 'POST',
     headers: {

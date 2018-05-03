@@ -19,6 +19,7 @@ export default class Menu extends Component {
       isSignIn: false
     };
     global.onSignIn = this.onSignIn.bind(this);
+    global.gotoChangeInfo = this.gotoChangeInfo.bind(this);
   }
   onSignIn(user) {
     this.setState({ user });
@@ -26,6 +27,10 @@ export default class Menu extends Component {
   onSignOut() {
     this.setState({ user: false });
     saveToken('');
+    this.props.navigation.navigate('ManHinh_Authentication');
+  }
+  gotoChangeInfo() {
+    this.props.navigation.navigate('ManHinh_ChangeInfo', this.state.user);
   }
   changeToVNamese() {
     I18n.locale = 'vi';

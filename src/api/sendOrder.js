@@ -1,5 +1,5 @@
 const sendOrder = (token, arrayDetail) => (
-  fetch('http://192.168.1.16:81/api/cart.php', //eslint-disable-line
+  fetch('http://unsmiling-plugs.000webhostapp.com/cart.php', //eslint-disable-line
   {
     method: 'POST',
     headers: {

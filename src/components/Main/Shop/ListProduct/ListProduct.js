@@ -11,7 +11,7 @@ import getListProduct from '../../../../api/getListProduct';
 import backList from '../../../../media/appIcon/backList.png';
 import I18n from '../../../../../i18n.js';
 
-const url = 'http://192.168.1.16:81/api/images/product/';
+const url = 'http://unsmiling-plugs.000webhostapp.com/images/product/';
 // import sp2 from '../../../../media/temp/sp2.jpeg';
 // import sp3 from '../../../../media/temp/sp3.jpeg';
 // import sp4 from '../../../../media/temp/sp4.jpeg';

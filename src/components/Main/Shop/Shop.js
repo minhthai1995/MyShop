@@ -41,7 +41,7 @@ export default class Shop extends Component {
 
 
   componentDidMount() {
-    // fetch('http://192.168.1.16:81/api/index.php')  // eslint-disable-line
+    // fetch('http://unsmiling-plugs.000webhostapp.com/index.php')  // eslint-disable-line
     // .then(res => res.json())
     initData()
     .then(resJSON => {
@@ -50,7 +50,8 @@ export default class Shop extends Component {
         types: type,
         mainData: resJSON
       });
-    });
+    })
+    .catch(error => console.log(error));
     getCart().then(cartArray => this.setState({ cartArray }));
   }
 
@@ -61,7 +62,6 @@ export default class Shop extends Component {
     }
     return false;
   }
-
   gotoSearch() {
     this.setState({
       selectedTab: 'search',
@@ -151,7 +151,7 @@ export default class Shop extends Component {
             selectedTitleStyle={{ color: '#34B089' }}
             badgeText={cartArray.length}
           >
-            <Cart cartArray={cartArray} />
+            <Cart cartArray={cartArray} navigation={this.props.navigation} />
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'search'}

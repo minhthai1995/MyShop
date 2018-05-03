@@ -14,14 +14,19 @@ import global from '../global';
 export default class Main extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      offset: 0.3
+    };
     global.forceUpdate = this.forceUpdate.bind(this);
   }
   componentDidMount() {
     getToken()
     .then(token => checkLogin(token))
     .then(res => global.onSignIn(res.user))
-    .catch(err => console.log('LOI LOGIN', err));
-
+    .catch(err => {
+      console.log('LOI LOGIN', err);
+      this.props.navigation.navigate('ManHinh_Authentication');
+    });
     setInterval(() => {
       getToken()
       .then(token => {
@@ -49,9 +54,9 @@ export default class Main extends Component {
           ref={(ref) => { this.drawer = ref; }}
           content={<Menu navigation={navigation} />}
           tapToClose
-          openDrawerOffset={0.3}
+          openDrawerOffset={this.state.offset}
           >
-            <Shop open={this.openControlPanel.bind(this)} />
+            <Shop navigation={navigation} open={this.openControlPanel.bind(this)} />
           </Drawer>
       </View>
     );

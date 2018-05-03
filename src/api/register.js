@@ -1,5 +1,5 @@
 const register = (email, name, password) => (
-  fetch('http://192.168.1.16:81/api/register.php',  //eslint-disable-line
+  fetch('http://unsmiling-plugs.000webhostapp.com/register.php',  //eslint-disable-line
   {
     method: 'POST',
     headers: {

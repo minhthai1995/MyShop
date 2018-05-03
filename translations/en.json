@@ -27,5 +27,8 @@
   "Material": "Material",
   "Color": "Color",
   "Total": "TOTAL",
-  "CheckOut": "CHECK-OUT NOW"
+  "CheckOut": "CHECK-OUT NOW",
+  "OrderId": "Order Id",
+  "OrderTime":"Order Time",
+  "Status":"Status"
 }

@@ -4,7 +4,8 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
-  StyleSheet
+  StyleSheet,
+  Alert
 } from 'react-native';
 import signIn from '../../api/signIn';
 import global from '../global';
@@ -28,7 +29,20 @@ export default class SignIn extends Component {
       this.props.goBackToMain();
       saveToken(res.token);
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err);
+      this.onFail();
+    });
+  }
+  onFail() {
+    Alert.alert(
+      'Notice',
+      'Invalid Name/Email',
+      [
+        { text: 'OK', onPress: () => console.log('Ask me later pressed') },
+      ],
+      { cancelable: false }
+    );
   }
   render() {
     const { email, password } = this.state;
