@@ -52,7 +52,7 @@ export default class TopProduct extends Component {
                 >
                   <Image source={{ uri: `${url}${item.images[0]}` }} style={styles.productImage} />
                   <Text style={styles.productName}>{item.name.toUpperCase()}</Text>
-                  <Text style={styles.productPrice}>{item.price}$</Text>
+                  <Text style={styles.productPrice}>{item.price} VND</Text>
                 </TouchableOpacity>
               }
             />

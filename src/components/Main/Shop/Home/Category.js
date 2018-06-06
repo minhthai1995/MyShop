@@ -19,6 +19,7 @@ export default class Category extends Component {
           <Swiper style={styles.swiperStyle}>
           {types.map(e => (
             <TouchableOpacity
+              style={styles.touchStyle}
               onPress={() => this.props.navigation.navigate('ListProduct_View', e)}
               key={e.id}
             >
@@ -40,7 +41,7 @@ const imageHeight = (imageWidth / 933) * 465;
 
 const styles = StyleSheet.create({
   wrapper: {
-      height: height / 3,
+      height: height / 2.8,
       backgroundColor: '#FFF',
       margin: 10,
       shadowColor: '#2E272B',
@@ -57,14 +58,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  touchStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   imageStyle: {
       height: imageHeight,
       width: imageWidth,
   },
   cateTitle: {
-    position: 'absolute',
-    fontSize: 16,
-    left: width / 3,
-    top: height / 10
+    marginTop: 8,
+    fontSize: 13,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

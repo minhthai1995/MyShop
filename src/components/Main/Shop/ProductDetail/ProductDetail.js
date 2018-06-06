@@ -30,7 +30,7 @@ export default class ProductDetail extends Component {
         const product = this.props.navigation.state.params;
         console.log('product ne', product);
         return (
-            <View style={wrapper}>
+            <ScrollView style={wrapper}>
                 <View style={cardStyle}>
                     <View style={header}>
                         <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
@@ -60,17 +60,17 @@ export default class ProductDetail extends Component {
                                 <Text style={txtMaterial}>{I18n.t('Material')} {product.material}</Text>
                                 <View style={{ flexDirection: 'row' }} >
                                     <Text style={txtColor}>{I18n.t('Color')} {product.color}</Text>
-                                    <View style={{ height: 15, width: 15, backgroundColor: product.color.toLowerCase(), borderRadius: 15, marginLeft: 10, borderWidth: 1, borderColor: '#C21C70' }} />
+
                                 </View>
                             </View>
                         </View>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }
-
+//<View style={{ height: 15, width: 15, backgroundColor: product.color.toLowerCase(), borderRadius: 15, marginLeft: 10, borderWidth: 1, borderColor: '#C21C70' }} />
 const { width } = Dimensions.get('window');
 const swiperWidth = (width / 1.8) - 30;
 const swiperHeight = (swiperWidth * 452) / 361;
