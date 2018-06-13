@@ -83,7 +83,7 @@ export default class ListProduct extends Component {
                 <Image source={{ uri: `${url}${item.images[0]}` }} style={styles.productImage} />
                 <View style={styles.productInfo}>
                   <Text style={styles.txtName}>{toTitleCase(item.name)}</Text>
-                  <Text style={styles.txtPrice}>{item.price}$</Text>
+                  <Text style={styles.txtPrice}>{item.price} VND</Text>
                   <View style={styles.briefInfo}>
                     <Text style={styles.txtColor}>{item.color}</Text>
                     <View />
@@ -152,12 +152,12 @@ const styles = StyleSheet.create({
   },
   txtName: {
     color: '#BCBCBC',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '400'
   },
   txtPrice: {
     color: '#B1D065',
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: '400'
   },
   txtColor: {
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
   txtShowDetail: {
     color: '#B10D65',
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: '400'
   }
 });

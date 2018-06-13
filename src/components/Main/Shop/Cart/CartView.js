@@ -87,26 +87,26 @@ export default class CartView extends Component {
                           >
                               <Text style={txtName}>{toTitleCase(item.product.name)}</Text>
                               <TouchableOpacity onPress={() => this.removeProduct(item.product.id)}>
-                                  <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>
+                                  <Text style={{ fontFamily: 'Avenir', color: '#969696', fontSize: 15 }}>
                                     X
                                   </Text>
                               </TouchableOpacity>
                           </View>
                           <View>
-                              <Text style={txtPrice}>{item.product.price}$</Text>
+                              <Text style={txtPrice}>{item.product.price} VND</Text>
                           </View>
                           <View style={productController}>
                               <View style={numberOfProduct}>
                                   <TouchableOpacity
                                     onPress={() => this.incrQuantity(item.product.id)}
                                   >
-                                      <Text>+</Text>
+                                      <Text style={{fontSize: 18}}>+</Text>
                                   </TouchableOpacity>
-                                  <Text>{item.quantity}</Text>
+                                  <Text style={{fontSize: 16}}>{item.quantity}</Text>
                                   <TouchableOpacity
                                     onPress={() => this.decrQuantity(item.product.id)}
                                   >
-                                      <Text>-</Text>
+                                      <Text style={{fontSize: 18}}>-</Text>
                                   </TouchableOpacity>
                               </View>
                               <TouchableOpacity
@@ -126,7 +126,7 @@ export default class CartView extends Component {
                   onPress={() => this.onSendOrder()}
                 >
                     <Text style={checkoutTitle}>
-                      {I18n.t('Total')} {total}$ {I18n.t('CheckOut')}
+                      {I18n.t('Total')} {total} VND {I18n.t('CheckOut')}
                     </Text>
                 </TouchableOpacity>
             </View>
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     },
     txtShowDetail: {
         color: '#C21C70',
-        fontSize: 10,
+        fontSize: 12,
         fontWeight: '400',
         fontFamily: 'Avenir',
         textAlign: 'right',

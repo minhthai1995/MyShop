@@ -119,14 +119,14 @@ const styles = StyleSheet.create({
     txtName: {
         paddingLeft: 20,
         color: '#A7A7A7',
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: '400',
         fontFamily: 'Avenir'
     },
     txtPrice: {
         paddingLeft: 20,
         color: '#C21C70',
-        fontSize: 15,
+        fontSize: 14,
         fontWeight: '400',
         fontFamily: 'Avenir'
     },
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     },
     txtShowDetail: {
         color: '#C21C70',
-        fontSize: 10,
+        fontSize: 12,
         fontWeight: '400',
         fontFamily: 'Avenir',
         textAlign: 'right',

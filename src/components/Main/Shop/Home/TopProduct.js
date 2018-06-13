@@ -102,11 +102,13 @@ const styles = StyleSheet.create({
     productName: {
       paddingLeft: 0,
       color: '#D3D3CF',
-      fontWeight: '500'
+      fontWeight: '500',
+      fontSize: 14
     },
     productPrice: {
       paddingLeft: 0,
       color: '#662F90',
-      fontWeight: '500'
+      fontWeight: '500',
+      fontSize: 14
     }
 });

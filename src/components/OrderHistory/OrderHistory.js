@@ -61,7 +61,7 @@ export default class OrderHistory extends Component {
                                 {I18n.t('Total')}:
                                 </Text>
                                 <Text style={{ color: '#C21C70', fontWeight: 'bold' }}>
-                                  {e.total}$
+                                  {e.total} VND
                                 </Text>
                             </View>
                         </View>

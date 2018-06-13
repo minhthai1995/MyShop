@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
       width: imageWidth,
   },
   cateTitle: {
-    marginTop: 8,
-    fontSize: 13,
+    marginTop: 3,
+    fontSize: 12,
     justifyContent: 'center',
     alignItems: 'center'
   }
